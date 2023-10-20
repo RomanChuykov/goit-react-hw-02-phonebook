@@ -16,11 +16,11 @@ export class App extends React.Component {
   };
 
   handlerSubmit = data => {
-    this.setState(({ contacts }) =>
+
+    const { contacts } = this.state;
       contacts.find(contact => contact.name === data.name)
         ? alert(`${data.name} is already in contacts`)
-        : { contacts: [data, ...contacts] }
-    );
+        : this.setState({ contacts: [data, ...contacts] });
   };
 
   onFilter = e => {
